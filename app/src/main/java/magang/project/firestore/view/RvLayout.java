@@ -26,28 +26,19 @@ public class RvLayout extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rv_layout);
 
-        recyclerView=findViewById(R.id.rv_list);
-
-        linearLayoutManager = new LinearLayoutManager(RvLayout.this);
-        recyclerView.setLayoutManager(linearLayoutManager);
-
-       // rvMakanPertama.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
-
-
-
         pojoSementaraList = new ArrayList<>();
         pojoSementaraList.add(new PojoSementara("nama","password"));
         pojoSementaraList.add(new PojoSementara("nama","password"));
         pojoSementaraList.add(new PojoSementara("nama","password"));
         pojoSementaraList.add(new PojoSementara("nama","password"));
 
+        recyclerView=findViewById(R.id.rv_list);
 
-
-
+        linearLayoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(linearLayoutManager);
+        recyclerView.setHasFixedSize(true);
         kelasAdapter = new KelasAdapter(pojoSementaraList,RvLayout.this);
-
-
-        /*masukkan ke recyclerview*/
+        //Memasang Adapter pada RecyclerView
         recyclerView.setAdapter(kelasAdapter);
 
 

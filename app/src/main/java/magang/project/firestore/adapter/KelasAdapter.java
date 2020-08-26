@@ -31,7 +31,7 @@ public class KelasAdapter extends RecyclerView.Adapter<KelasAdapter.KelasAdapter
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.rv_adapter, null);
         KelasAdapterChild kelasAdapterChild=new KelasAdapterChild(view);
 
-        return null;
+        return kelasAdapterChild;
     }
 
     @Override
