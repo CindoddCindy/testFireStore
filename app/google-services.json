@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "680531920737",
+    "firebase_url": "https://signin-9c504.firebaseio.com",
+    "project_id": "signin-9c504",
+    "storage_bucket": "signin-9c504.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:680531920737:android:7d461fd6936e5f8c1f6720",
+        "android_client_info": {
+          "package_name": "magang.project.firestore"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "680531920737-otvftri8fb50s48peer3qh45d1ig023h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB-zVRvXanl3j2mHOZrdCxaCi1WyyRr0Ng"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "680531920737-otvftri8fb50s48peer3qh45d1ig023h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
