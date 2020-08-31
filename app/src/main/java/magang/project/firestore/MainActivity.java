@@ -10,8 +10,12 @@ import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
@@ -41,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
         this.db = FirebaseFirestore.getInstance();
 
         addNewContact();
+        ReadSingleContact();
 /*
         new Handler().postDelayed(new Runnable() {
             @Override
@@ -80,4 +85,26 @@ public class MainActivity extends AppCompatActivity {
                 });
 
     }
+    private void ReadSingleContact() {
+        DocumentReference user = db.collection("PhoneBook").document("Contacts");
+        user.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task< DocumentSnapshot > task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot doc = task.getResult();
+                    StringBuilder fields = new StringBuilder("");
+                    fields.append("Name: ").append(doc.get("Name"));
+                    fields.append("\nEmail: ").append(doc.get("Email"));
+                    fields.append("\nPhone: ").append(doc.get("Phone"));
+                    textView_tampil_data.setText(fields.toString());
+                }
+            }
+        })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                    }
+                });
+    }
+
 }
