@@ -3,6 +3,7 @@ package magang.project.firestore.view;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -26,7 +27,7 @@ public class AddData extends AppCompatActivity {
 
     private EditText editText_data_satu, editText_data_dua;
 
-    private Button button_add_data;
+    private Button button_add_data , button_lihat_data;
 
     private FirebaseFirestore firestoreDB;
 
@@ -41,9 +42,14 @@ public class AddData extends AppCompatActivity {
         editText_data_satu=findViewById(R.id.et_add_data_satu);
         editText_data_dua=findViewById(R.id.et_add_data_dua);
         button_add_data=findViewById(R.id.btn_add_data);
+        button_lihat_data=findViewById(R.id.btn_lihat_data);
+
+
 
         firestoreDB = FirebaseFirestore.getInstance();
         addDatas();
+
+        dataTampil();
 
 
 
@@ -83,6 +89,17 @@ public class AddData extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "Note could not be added!", Toast.LENGTH_SHORT).show();
                     }
                 });
+    }
+
+    public void dataTampil(){
+        button_lihat_data.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(AddData.this, RvLayout.class);
+                startActivity(intent);
+
+            }
+        });
     }
 
 

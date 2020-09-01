@@ -32,9 +32,21 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Add Data"
+            android:layout_margin="10dp"
             >
 
         </Button>
+
+        <Button
+            android:layout_margin="10dp"
+            android:id="@+id/btn_lihat_data"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Add Data"
+            >
+
+        </Button>
+
 
 
     </LinearLayout>
