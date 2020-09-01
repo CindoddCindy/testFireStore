@@ -14,10 +14,13 @@ import magang.project.firestore.adapter.KelasAdapter;
 import magang.project.firestore.model.PojoSementara;
 
 public class RvLayout extends AppCompatActivity {
+  /*
     private List<PojoSementara> pojoSementaraList;
     private RecyclerView recyclerView;
     private LinearLayoutManager linearLayoutManager;
     private KelasAdapter kelasAdapter;
+
+   */
 
 
 
@@ -25,7 +28,7 @@ public class RvLayout extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rv_layout);
-
+/*
         pojoSementaraList = new ArrayList<>();
         pojoSementaraList.add(new PojoSementara("nama","password"));
         pojoSementaraList.add(new PojoSementara("nama","password"));
@@ -41,6 +44,8 @@ public class RvLayout extends AppCompatActivity {
         //Memasang Adapter pada RecyclerView
         recyclerView.setAdapter(kelasAdapter);
 
+
+ */
 
     }
 }

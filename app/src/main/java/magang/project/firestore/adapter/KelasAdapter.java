@@ -9,17 +9,23 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.firestore.FirebaseFirestore;
+
 import java.util.List;
 
 import magang.project.firestore.R;
+import magang.project.firestore.model.ModelFireBase;
 import magang.project.firestore.model.PojoSementara;
 
 public class KelasAdapter extends RecyclerView.Adapter<KelasAdapter.KelasAdapterChild> {
-    private List<PojoSementara> pojoSementaraList;
+    private List<ModelFireBase> modelFireBaseList;
     private Context context;
-    public KelasAdapter(List<PojoSementara> pojoSementaraList,Context context){
-        this.pojoSementaraList=pojoSementaraList;
+    private FirebaseFirestore firestoreDB;
+
+    public KelasAdapter(List<ModelFireBase> modelFireBaseList,Context context,FirebaseFirestore firestoreDB){
+        this.modelFireBaseList=modelFireBaseList;
         this.context=context;
+        this.firestoreDB=firestoreDB;
 
     }
 
@@ -36,15 +42,18 @@ public class KelasAdapter extends RecyclerView.Adapter<KelasAdapter.KelasAdapter
 
     @Override
     public void onBindViewHolder(@NonNull KelasAdapterChild holder, int position) {
-        holder.textView_satu.setText(pojoSementaraList.get(position).nama);
-        holder.textView_dua.setText(pojoSementaraList.get(position).password);
 
+        final int itemPosition = position;
+        final ModelFireBase note = modelFireBaseList.get(itemPosition);
+
+        holder.textView_satu.setText(note.getData_satu());
+        holder.textView_dua.setText(note.getData_dua());
 
     }
 
     @Override
     public int getItemCount() {
-        return pojoSementaraList.size();
+        return modelFireBaseList.size();
     }
 
     public class KelasAdapterChild extends RecyclerView.ViewHolder{
