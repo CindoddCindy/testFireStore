@@ -47,7 +47,7 @@ public class LoginUser extends AppCompatActivity {
 
                 // Shared Pref ini berfungsi untuk menjadi trigger session login
                 sharedPrefHandle.setSpSudahLogin(SharedPrefHandle.SP_SUDAH_LOGIN, true);
-                startActivity(new Intent(LoginUser.this, RvLayout.class)
+                startActivity(new Intent(LoginUser.this, AddData.class)
                         .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK));
                 finish();
 
