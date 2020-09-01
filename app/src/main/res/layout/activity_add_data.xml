@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_margin="10dp"
     android:orientation="vertical"
     tools:context=".view.AddData">
     <LinearLayout
@@ -12,6 +13,29 @@
         android:orientation="vertical"
         android:layout_gravity="center"
         android:gravity="center">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/et_add_data_satu">
+
+        </EditText>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/et_add_data_dua">
+
+        </EditText>
+
+        <Button
+            android:id="@+id/btn_add_data"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Add Data"
+            >
+
+        </Button>
+
 
     </LinearLayout>
 
