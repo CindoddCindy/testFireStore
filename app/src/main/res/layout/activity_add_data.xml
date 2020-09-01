@@ -42,10 +42,21 @@
             android:id="@+id/btn_lihat_data"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Add Data"
+            android:text="Lihat Data"
             >
 
         </Button>
+
+        <Button
+            android:layout_margin="10dp"
+            android:id="@+id/btn_update_data"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Update Data"
+            >
+
+        </Button>
+
 
 
 

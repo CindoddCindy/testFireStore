@@ -29,7 +29,11 @@ public class AddData extends AppCompatActivity {
 
     private Button button_add_data , button_lihat_data;
 
+    private Button button_update_data;
+
     private FirebaseFirestore firestoreDB;
+
+    String id;
 
     private static final String TAG = "AddNoteActivity";
 
@@ -43,6 +47,16 @@ public class AddData extends AppCompatActivity {
         editText_data_dua=findViewById(R.id.et_add_data_dua);
         button_add_data=findViewById(R.id.btn_add_data);
         button_lihat_data=findViewById(R.id.btn_lihat_data);
+        button_update_data=findViewById(R.id.btn_update_data);
+
+        Bundle bundle = getIntent().getExtras();
+        if (bundle != null) {
+            id = bundle.getString("UpdateNoteId");
+
+            editText_data_satu.setText(bundle.getString("UpdateNoteTitle"));
+            editText_data_dua.setText(bundle.getString("UpdateNoteContent"));
+        }
+
 
 
 
@@ -55,21 +69,60 @@ public class AddData extends AppCompatActivity {
 
 
 
+
+
+
     }
+
+
+                private void updateNote(String id, String title, String content) {
+                    Map<String, Object> note = (new ModelFireBase(id, title, content)).toMap();
+
+                    firestoreDB.collection("PhoneBook")
+                            .document(id)
+                            .set(note)
+                            .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void aVoid) {
+                                    Log.e(TAG, "Note document update successful!");
+                                    Toast.makeText(getApplicationContext(), "Note has been updated!", Toast.LENGTH_SHORT).show();
+                                }
+                            })
+
+                            .addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    Log.e(TAG, "Error adding Note document", e);
+                                    Toast.makeText(getApplicationContext(), "Note could not be updated!", Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                }
+
 
     public void addDatas(){
         button_add_data.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                addData();
+                String data_satu = editText_data_satu.getText().toString();
+                String data_dua = editText_data_dua.getText().toString();
+
+
+                if (data_satu.length() > 0) {
+                    if (id.length() > 0) {
+                        updateNote(id, data_satu, data_dua);
+                    } else {
+                        addData(data_satu, data_dua);
+                    }
+                }
+
+                finish();
+
 
             }
         });
     }
 
-    public void addData(){
-        String data_satu =editText_data_satu.getText().toString();
-        String data_dua= editText_data_dua.getText().toString();
+    public void addData(String data_satu, String data_dua){
 
         Map<String, Object> note = new ModelFireBase(data_satu, data_dua).toMap();
 
